@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Wallet body -->
+  <rect x="14" y="32" width="100" height="72" rx="8" ry="8" fill="none" stroke="#C5C5C5" stroke-width="4"/>
+
+  <!-- Wallet flap/fold line -->
+  <path d="M14 52 L114 52" stroke="#C5C5C5" stroke-width="4"/>
+
+  <!-- Wallet clasp/button -->
+  <circle cx="100" cy="68" r="8" fill="#C5C5C5"/>
+
+  <!-- "O" letter on wallet -->
+  <circle cx="54" cy="76" r="18" fill="none" stroke="#C5C5C5" stroke-width="5"/>
+</svg>

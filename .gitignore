@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Downloaded binaries
+bin/
+
+# Build output
+out/
+dist/
+
+# VS Code extension package
+*.vsix
+
+# VS Code test runner
+.vscode-test/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+.vscode/
+
+# Test output
+coverage/
+.nyc_output/
+
+# Environment files
+.env
+.env.local
+
+# Temp files
+nul

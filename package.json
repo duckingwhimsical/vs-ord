@@ -1,0 +1,330 @@
+{
+  "name": "vs-ord",
+  "displayName": "Ordinals Development",
+  "description": "Develop and test Bitcoin Ordinals inscriptions locally. Auto-downloads bitcoind and ord, manages regtest environment.",
+  "version": "0.1.0",
+  "publisher": "ordinals-dev",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ordinals-dev/vs-ord"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Testing"
+  ],
+  "keywords": [
+    "bitcoin",
+    "ordinals",
+    "inscriptions",
+    "ord",
+    "regtest",
+    "blockchain"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ord.start",
+        "title": "Ord: Start Services",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ord.stop",
+        "title": "Ord: Stop Services",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "ord.inscribe",
+        "title": "Ord: Inscribe Current File",
+        "icon": "$(file-add)"
+      },
+      {
+        "command": "ord.inscribeFile",
+        "title": "Inscribe with Ord"
+      },
+      {
+        "command": "ord.createWallet",
+        "title": "Ord: Create Wallet",
+        "icon": "$(add)"
+      },
+      {
+        "command": "ord.createNamedWallet",
+        "title": "Ord: Create Named Wallet",
+        "icon": "$(add)"
+      },
+      {
+        "command": "ord.switchWallet",
+        "title": "Ord: Switch Wallet",
+        "icon": "$(arrow-swap)"
+      },
+      {
+        "command": "ord.getBalance",
+        "title": "Ord: Show Wallet Balance"
+      },
+      {
+        "command": "ord.mineBlocks",
+        "title": "Ord: Mine Blocks",
+        "icon": "$(package)"
+      },
+      {
+        "command": "ord.openServer",
+        "title": "Ord: Open Server in Browser",
+        "icon": "$(globe)"
+      },
+      {
+        "command": "ord.downloadBinaries",
+        "title": "Ord: Download/Update Binaries"
+      },
+      {
+        "command": "ord.showOutput",
+        "title": "Ord: Show Output"
+      },
+      {
+        "command": "ord.statusBarMenu",
+        "title": "Ord: Show Commands"
+      },
+      {
+        "command": "ord.openInscription",
+        "title": "Ord: Open Inscription"
+      },
+      {
+        "command": "ord.resetWallet",
+        "title": "Ord: Reset Wallet"
+      },
+      {
+        "command": "ord.refreshWallet",
+        "title": "Refresh Wallet",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ord.refreshInscriptions",
+        "title": "Refresh Inscriptions",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ord.copyAddress",
+        "title": "Copy Address"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "ord.inscribeFile",
+          "group": "ordinals"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "ord.inscribe",
+          "group": "ordinals"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "ord.start",
+          "when": "view == ordinalsWallet && !ordinals.servicesRunning",
+          "group": "navigation@1"
+        },
+        {
+          "command": "ord.stop",
+          "when": "view == ordinalsWallet && ordinals.servicesRunning",
+          "group": "navigation@1"
+        },
+        {
+          "command": "ord.switchWallet",
+          "when": "view == ordinalsWallet && ordinals.servicesRunning",
+          "group": "navigation@2"
+        },
+        {
+          "command": "ord.createNamedWallet",
+          "when": "view == ordinalsWallet && ordinals.servicesRunning",
+          "group": "navigation@3"
+        },
+        {
+          "command": "ord.mineBlocks",
+          "when": "view == ordinalsWallet && ordinals.servicesRunning",
+          "group": "navigation@4"
+        },
+        {
+          "command": "ord.openServer",
+          "when": "view == ordinalsWallet && ordinals.servicesRunning",
+          "group": "navigation@5"
+        },
+        {
+          "command": "ord.refreshWallet",
+          "when": "view == ordinalsWallet",
+          "group": "navigation@6"
+        },
+        {
+          "command": "ord.inscribe",
+          "when": "view == ordinalsInscriptions && ordinals.servicesRunning",
+          "group": "navigation@1"
+        },
+        {
+          "command": "ord.refreshInscriptions",
+          "when": "view == ordinalsInscriptions",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "ord.openInscription",
+          "when": "view == ordinalsInscriptions && viewItem == inscription",
+          "group": "inline"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ordinals",
+          "title": "Ordinals",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ordinals": [
+        {
+          "id": "ordinalsWallet",
+          "name": "Wallet"
+        },
+        {
+          "id": "ordinalsInscriptions",
+          "name": "Recent Inscriptions"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "ordinalsWallet",
+        "contents": "Services are not running.\n[Start Services](command:ord.start)",
+        "when": "!ordinals.servicesRunning"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ord.inscribe",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "ord.openServer",
+        "key": "ctrl+shift+o",
+        "mac": "cmd+shift+o"
+      },
+      {
+        "command": "ord.statusBarMenu",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b"
+      }
+    ],
+    "configuration": {
+      "title": "Ordinals",
+      "properties": {
+        "ord.network": {
+          "type": "string",
+          "default": "regtest",
+          "enum": [
+            "regtest",
+            "testnet",
+            "signet",
+            "mainnet"
+          ],
+          "enumDescriptions": [
+            "Local testing network - instant blocks, free coins (recommended)",
+            "Public test network - requires testnet coins from a faucet",
+            "Signet test network - more stable than testnet",
+            "Real Bitcoin mainnet - inscriptions cost real money!"
+          ],
+          "description": "Bitcoin network to use",
+          "markdownDescription": "Bitcoin network to use for inscriptions.\n\n- **regtest**: Local testing, instant blocks, free coins _(recommended)_\n- **testnet**: Public test network\n- **signet**: Stable test network\n- **mainnet**: Real Bitcoin _(costs real money!)_"
+        },
+        "ord.dataDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Custom data directory for bitcoind and ord (leave empty for default)",
+          "markdownDescription": "Custom data directory for Bitcoin blockchain data.\n\nLeave empty to use the default location:\n- **Windows**: `%APPDATA%\\Bitcoin`\n- **macOS**: `~/Library/Application Support/Bitcoin`\n- **Linux**: `~/.bitcoin`"
+        },
+        "ord.autoStart": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically start services when VS Code opens",
+          "markdownDescription": "Automatically start `bitcoind` and `ord` when VS Code opens.\n\nUseful if you always want services running when working on ordinals projects."
+        },
+        "ord.autoDownload": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically download bitcoind and ord if not installed",
+          "markdownDescription": "Automatically download Bitcoin Core and ord binaries if they are not installed.\n\nBinaries are downloaded from:\n- Bitcoin Core: [bitcoincore.org](https://bitcoincore.org)\n- Ord: [GitHub releases](https://github.com/ordinals/ord/releases)"
+        },
+        "ord.autoUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check for and install bitcoind/ord updates",
+          "markdownDescription": "Periodically check for new versions of Bitcoin Core and ord.\n\nWhen updates are available, you'll be prompted to download them."
+        },
+        "ord.updateCheckInterval": {
+          "type": "number",
+          "default": 24,
+          "minimum": 0,
+          "description": "Hours between automatic update checks (0 to disable periodic checks)",
+          "markdownDescription": "Hours between automatic update checks.\n\nSet to `0` to disable periodic checks (you can still check manually)."
+        },
+        "ord.bitcoindRpcPort": {
+          "type": "number",
+          "default": 18443,
+          "description": "Bitcoind RPC port",
+          "markdownDescription": "Port for Bitcoin Core RPC server.\n\nDefaults by network:\n- **regtest**: `18443`\n- **testnet**: `18332`\n- **signet**: `38332`\n- **mainnet**: `8332`"
+        },
+        "ord.ordServerPort": {
+          "type": "number",
+          "default": 9001,
+          "description": "Ord server port",
+          "markdownDescription": "Port for the ord HTTP server.\n\nAccess the ord explorer at `http://localhost:{port}`"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "compile:tests": "tsc -p ./tsconfig.test.json",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "lint": "eslint src --ext ts",
+    "test": "npm run compile:tests && node ./out/test/runTests.js",
+    "test:unit": "npm run compile:tests && mocha ./out/test/unit/**/*.test.js --timeout 10000",
+    "test:e2e": "npm run compile:tests && mocha ./out/test/e2e/**/*.test.js --timeout 300000"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.0",
+    "@types/sinon": "^17.0.2",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.54.0",
+    "mocha": "^10.2.0",
+    "sinon": "^17.0.1",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.3.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "tar": "^6.2.0",
+    "tree-kill": "^1.2.2"
+  }
+}
