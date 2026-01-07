@@ -2,8 +2,8 @@
   "name": "vs-ord",
   "displayName": "Ordinals Development",
   "description": "Develop and test Bitcoin Ordinals inscriptions locally. Auto-downloads bitcoind and ord, manages regtest environment.",
-  "version": "0.1.8",
-  "publisher": "ordinals-dev",
+  "version": "0.1.9",
+  "publisher": "duckingwhimsical",
   "icon": "images/icon.png",
   "license": "MIT",
   "repository": {
