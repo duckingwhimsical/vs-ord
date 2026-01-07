@@ -30,7 +30,7 @@ export function getBitcoindAssetName(version: string): string {
       return `bitcoin-${v}-win64.zip`;
     case 'macos':
       return arch === 'arm64'
-        ? `bitcoin-${v}-aarch64-apple-darwin.tar.gz`
+        ? `bitcoin-${v}-arm64-apple-darwin.tar.gz`
         : `bitcoin-${v}-x86_64-apple-darwin.tar.gz`;
     case 'linux':
       return arch === 'arm64'

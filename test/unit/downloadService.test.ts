@@ -26,8 +26,8 @@ describe('Download Service Integration', () => {
           browser_download_url: 'https://example.com/bitcoin-28.0-x86_64-apple-darwin.tar.gz',
         },
         {
-          name: 'bitcoin-28.0-aarch64-apple-darwin.tar.gz',
-          browser_download_url: 'https://example.com/bitcoin-28.0-aarch64-apple-darwin.tar.gz',
+          name: 'bitcoin-28.0-arm64-apple-darwin.tar.gz',
+          browser_download_url: 'https://example.com/bitcoin-28.0-arm64-apple-darwin.tar.gz',
         },
         {
           name: 'bitcoin-28.0-aarch64-linux-gnu.tar.gz',
@@ -140,7 +140,7 @@ describe('Download Service Integration', () => {
           } else if (platform === 'linux') {
             expectedPattern = arch === 'arm64' ? 'aarch64-linux-gnu' : 'x86_64-linux-gnu';
           } else {
-            expectedPattern = arch === 'arm64' ? 'aarch64-apple-darwin' : 'x86_64-apple-darwin';
+            expectedPattern = arch === 'arm64' ? 'arm64-apple-darwin' : 'x86_64-apple-darwin';
           }
 
           const asset = mockBitcoinRelease.assets.find((a) => a.name.includes(expectedPattern));

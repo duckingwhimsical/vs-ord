@@ -26,7 +26,7 @@ describe('Download URL Verification', () => {
         return `bitcoin-${v}-win64.zip`;
       case 'macos':
         return arch === 'arm64'
-          ? `bitcoin-${v}-aarch64-apple-darwin.tar.gz`
+          ? `bitcoin-${v}-arm64-apple-darwin.tar.gz`
           : `bitcoin-${v}-x86_64-apple-darwin.tar.gz`;
       case 'linux':
         return arch === 'arm64'
@@ -117,7 +117,7 @@ describe('Download URL Verification', () => {
 
       assert.strictEqual(
         url,
-        'https://bitcoincore.org/bin/bitcoin-core-30.1/bitcoin-30.1-aarch64-apple-darwin.tar.gz'
+        'https://bitcoincore.org/bin/bitcoin-core-30.1/bitcoin-30.1-arm64-apple-darwin.tar.gz'
       );
     });
 
