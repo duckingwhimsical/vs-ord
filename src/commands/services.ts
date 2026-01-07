@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { startBitcoind, stopBitcoind, isBitcoindRunning } from '../services/bitcoind';
+import { startBitcoind, stopBitcoind } from '../services/bitcoind';
 import { startOrdServer, stopOrdServer, isOrdRunning, verifyOrdBitcoindConnection } from '../services/ord';
 import { ensureBinariesInstalled } from '../services/download';
 import { updateStatusBar } from '../ui/statusBar';

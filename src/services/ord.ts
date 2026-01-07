@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { spawn, ChildProcess, execSync, exec } from 'child_process';
+import { spawn, ChildProcess, exec } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as http from 'http';
@@ -9,10 +9,10 @@ import { log as sharedLog, logSection, logProcessOutput, logError, logWarn } fro
 import { getCurrentWallet } from '../utils/walletState';
 
 let ordProcess: ChildProcess | null = null;
-let outputChannel: vscode.OutputChannel | null = null;
+let _outputChannel: vscode.OutputChannel | null = null;
 
 export function setOrdOutputChannel(channel: vscode.OutputChannel): void {
-  outputChannel = channel;
+  _outputChannel = channel;
 }
 
 function log(message: string): void {

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
-import { createOrdWallet, getOrdBalance, getOrdReceiveAddress, clearOrdWallet, clearAllOrdData, isOrdRunning, stopOrdServer, startOrdServer } from '../services/ord';
-import { generateToAddress, createWallet as createBitcoinWallet, listWallets as listBitcoinWallets, loadWallet, unloadWallet, getNewAddress, rpcCall } from '../utils/rpc';
+import { createOrdWallet, getOrdBalance, getOrdReceiveAddress, clearAllOrdData, isOrdRunning, stopOrdServer, startOrdServer } from '../services/ord';
+import { generateToAddress, createWallet as createBitcoinWallet, listWallets as listBitcoinWallets, loadWallet, unloadWallet, getNewAddress } from '../utils/rpc';
 import { isBitcoindRunning } from '../services/bitcoind';
 import { getConfig } from '../utils/config';
 import { log } from '../ui/outputChannel';

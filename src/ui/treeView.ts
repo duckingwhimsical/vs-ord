@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { isBitcoindRunning } from '../services/bitcoind';
 import { isOrdRunning, getOrdBalance, getOrdReceiveAddress } from '../services/ord';
-import { getInscriptionHistory, InscriptionRecord } from '../utils/inscriptionHistory';
+import { getInscriptionHistory } from '../utils/inscriptionHistory';
 import { getConfig } from '../utils/config';
 import { getCurrentWallet, listWallets } from '../utils/walletState';
 

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { createOutputChannel, showOutput, disposeOutputChannel, log } from './ui/outputChannel';
-import { createStatusBar, disposeStatusBar, updateStatusBar, showStatusBarMenu } from './ui/statusBar';
+import { createStatusBar, disposeStatusBar, showStatusBarMenu } from './ui/statusBar';
 import { registerTreeViews } from './ui/treeView';
 import { setBitcoindOutputChannel, stopBitcoind } from './services/bitcoind';
 import { setOrdOutputChannel, stopOrdServer } from './services/ord';
@@ -18,7 +18,6 @@ import {
   inscribeCurrentFile,
   inscribeFileFromExplorer,
   downloadBinaries,
-  checkAndPromptUpdates,
 } from './commands';
 import { initWalletState } from './utils/walletState';
 import { ensureBinariesInstalled, getInstalledVersions, checkForUpdates } from './services/download';
@@ -186,7 +185,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   context.subscriptions.push(statusBar);
 
   // Register tree views
-  const { walletProvider, inscriptionsProvider } = registerTreeViews(context);
+  registerTreeViews(context);
 
   // Register commands
   context.subscriptions.push(
