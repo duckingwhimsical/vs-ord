@@ -146,11 +146,46 @@ async function extractArchive(archivePath: string, destDir: string): Promise<voi
   }
 }
 
+/**
+ * Get the latest Bitcoin Core version from bitcoincore.org
+ * We can't rely on GitHub releases because they may be ahead of actual binary releases
+ */
+async function getLatestBitcoinCoreVersion(): Promise<string> {
+  const response = await httpsGet('https://bitcoincore.org/bin/');
+
+  // Parse the directory listing to find bitcoin-core-X.Y versions
+  const versionRegex = /bitcoin-core-(\d+\.\d+)/g;
+  const versions: string[] = [];
+  let match;
+
+  while ((match = versionRegex.exec(response)) !== null) {
+    versions.push(match[1]);
+  }
+
+  if (versions.length === 0) {
+    throw new Error('Could not find any Bitcoin Core versions on bitcoincore.org');
+  }
+
+  // Sort versions and get the latest
+  versions.sort((a, b) => {
+    const [aMajor, aMinor] = a.split('.').map(Number);
+    const [bMajor, bMinor] = b.split('.').map(Number);
+    if (aMajor !== bMajor) return bMajor - aMajor;
+    return bMinor - aMinor;
+  });
+
+  return versions[0];
+}
+
 export async function getLatestBitcoindRelease(): Promise<GitHubRelease> {
-  const response = await httpsGet(
-    'https://api.github.com/repos/bitcoin/bitcoin/releases/latest'
-  );
-  return JSON.parse(response);
+  // Get the actual latest version from bitcoincore.org (not GitHub)
+  const version = await getLatestBitcoinCoreVersion();
+
+  // Return a mock GitHubRelease structure for compatibility
+  return {
+    tag_name: `v${version}`,
+    assets: [], // Bitcoin Core doesn't use GitHub assets
+  };
 }
 
 export async function getLatestOrdRelease(): Promise<GitHubRelease> {
