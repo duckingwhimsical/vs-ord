@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ordinals-dev/vs-ord"
+    "url": "https://github.com/duckingwhimsical/vs-ord"
   },
   "engines": {
     "vscode": "^1.85.0"

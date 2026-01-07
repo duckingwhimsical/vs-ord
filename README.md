@@ -11,6 +11,44 @@ Develop and test Bitcoin Ordinals inscriptions locally without needing to set up
 - **Wallet Management**: Create wallets, check balance, mine blocks
 - **Recent Inscriptions**: Quick access to your last 5 inscriptions from the status bar
 
+## Installation
+
+### From VS Code Marketplace
+
+1. Open VS Code
+2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
+3. Search for "Ordinals Development"
+4. Click **Install**
+
+### From VSIX File
+
+1. Download the `.vsix` file from the [Releases](https://github.com/duckingwhimsical/vs-ord/releases) page
+2. In VS Code, go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
+3. Click the `...` menu (top right) and select **Install from VSIX...**
+4. Select the downloaded `.vsix` file
+
+### Building from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/duckingwhimsical/vs-ord.git
+cd vs-ord
+
+# Install dependencies
+npm install
+
+# Compile the extension
+npm run compile
+
+# Option 1: Run in development mode
+# Press F5 in VS Code to launch Extension Development Host
+
+# Option 2: Package as VSIX
+npm install -g @vscode/vsce
+vsce package
+# Then install the generated .vsix file
+```
+
 ## Quick Start
 
 1. **Install the extension**
