@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 import { spawn, ChildProcess, exec } from 'child_process';
 import * as fs from 'fs';
 import { getBitcoindPath, getDefaultDataDirectory, getPlatform } from '../utils/platform';
