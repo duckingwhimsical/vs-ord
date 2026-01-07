@@ -9,11 +9,6 @@ import { log as sharedLog, logSection, logProcessOutput, logError, logWarn } fro
 import { getCurrentWallet } from '../utils/walletState';
 
 let ordProcess: ChildProcess | null = null;
-let _outputChannel: vscode.OutputChannel | null = null;
-
-export function setOrdOutputChannel(channel: vscode.OutputChannel): void {
-  _outputChannel = channel;
-}
 
 function log(message: string): void {
   sharedLog(`[ord] ${message}`);

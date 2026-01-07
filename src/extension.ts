@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 import { createOutputChannel, showOutput, disposeOutputChannel, log } from './ui/outputChannel';
 import { createStatusBar, disposeStatusBar, showStatusBarMenu } from './ui/statusBar';
 import { registerTreeViews } from './ui/treeView';
-import { setBitcoindOutputChannel, stopBitcoind } from './services/bitcoind';
-import { setOrdOutputChannel, stopOrdServer } from './services/ord';
+import { stopBitcoind } from './services/bitcoind';
+import { stopOrdServer } from './services/ord';
 import { getConfig } from './utils/config';
 import {
   startServices,
@@ -176,9 +176,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   initWalletState(context);
 
   // Create output channel
-  const outputChannel = createOutputChannel();
-  setBitcoindOutputChannel(outputChannel);
-  setOrdOutputChannel(outputChannel);
+  createOutputChannel();
 
   // Create status bar
   const statusBar = createStatusBar();

@@ -1,4 +1,3 @@
-import * as vscode from 'vscode';
 import { spawn, ChildProcess, exec } from 'child_process';
 import * as fs from 'fs';
 import { getBitcoindPath, getDefaultDataDirectory, getPlatform } from '../utils/platform';
@@ -7,11 +6,6 @@ import { isBitcoindReady } from '../utils/rpc';
 import { log as sharedLog, logSection, logProcessOutput, logError, logWarn } from '../ui/outputChannel';
 
 let bitcoindProcess: ChildProcess | null = null;
-let _outputChannel: vscode.OutputChannel | null = null;
-
-export function setBitcoindOutputChannel(channel: vscode.OutputChannel): void {
-  _outputChannel = channel;
-}
 
 function log(message: string): void {
   sharedLog(`[bitcoind] ${message}`);
